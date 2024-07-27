@@ -28,7 +28,13 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect()->intended(route('dashboard', absolute: false));
+        // Pengondisian jika user type itu bertype 'admin' maka akan di redirect kehalaman 'admin/dashboard'
+        if($request->user()->usertype === 'admin') {
+            return redirect('admin/dashboard');
+        }
+
+        // Tapi jika user typenya bertype 'user' maka akan di redirect kehalaman 'dashboard'
+        return redirect()->intended(route('dashboard'));
     }
 
     /**
