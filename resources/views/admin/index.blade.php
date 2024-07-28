@@ -1,12 +1,37 @@
-<center><h3>Admin Page</h3></center>
+<!DOCTYPE html>
+<html>
 
-<!-- Authentication -->
-<form method="POST" action="{{ route('logout') }}">
-    @csrf
+  <head> 
+    {{-- Css Admin Page --}}
+    @include('admin.css')
+  </head>
+  
+  <body>
+    {{-- Header Admin Page --}}
+    @include('admin.header')
 
-    <x-responsive-nav-link :href="route('logout')"
-            onclick="event.preventDefault();
-                        this.closest('form').submit();">
-        {{ __('Log Out') }}
-    </x-responsive-nav-link>
-</form>
+    {{-- Sidebar Navigation Admin Page --}}
+    @include('admin.sidebar')
+
+      <!-- Sidebar Navigation end-->
+      <div class="page-content">
+        <div class="page-header">
+          <div class="container-fluid">
+
+            {{-- Admin Body Page --}}
+            @include('admin.body')
+
+          </div>
+      </div>
+    </div>
+    <!-- JavaScript files-->
+    <script src="{{ asset('admincss/vendor/jquery/jquery.min.js') }}"></script>
+    <script src="{{ asset('admincss/vendor/popper.js/umd/popper.min.js') }}"> </script>
+    <script src="{{ asset('admincss/vendor/bootstrap/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('admincss/vendor/jquery.cookie/jquery.cookie.js') }}"></script>
+    <script src="{{ asset('admincss/vendor/chart.js/Chart.min.js') }}"></script>
+    <script src="{{ asset('admincss/vendor/jquery-validation/jquery.validate.min.js') }}"></script>
+    <script src="{{ asset('admincss/js/charts-home.js') }}"></script>
+    <script src="{{ asset('admincss/js/front.js') }}"></script>
+  </body>
+</html>
