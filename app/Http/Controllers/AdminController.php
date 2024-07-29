@@ -18,6 +18,8 @@ class AdminController extends Controller
         $category = new Category;
         $category -> category_name = $request -> category;
         $category -> save();
+        // Menambahkan flash message ketika category yang dibuat berhasil
+        toastr()->closeButton()->timeOut(1300)->success('Category Added Successfully');
         return redirect() -> back();
     }
 }
