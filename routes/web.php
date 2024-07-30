@@ -30,3 +30,9 @@ Route::post('add_category', [AdminController::class,'add_category'])->middleware
 
 // Route untuk delete data category
 Route::post('delete_category/{id}', [AdminController::class,'delete_category'])->middleware(['auth','admin']);
+
+// Route untuk edit category
+Route::get('edit_category/{id}', [AdminController::class, 'editCategory'])->middleware(['auth','admin']);
+
+// Route untuk update category
+Route::post('update_category/{id}', [AdminController::class, 'updateCategory'])->middleware(['auth','admin']);
