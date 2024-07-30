@@ -36,3 +36,9 @@ Route::get('edit_category/{id}', [AdminController::class, 'editCategory'])->midd
 
 // Route untuk update category
 Route::post('update_category/{id}', [AdminController::class, 'updateCategory'])->middleware(['auth','admin']);
+
+// Route untuk menambahkan product
+Route::get('add_product', [AdminController::class, 'add_product'])->middleware(['auth','admin']);
+
+// Route untuk upload product
+Route::post('upload_product', [AdminController::class, 'upload_product'])->middleware(['auth','admin']);
