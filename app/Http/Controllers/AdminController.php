@@ -10,7 +10,8 @@ class AdminController extends Controller
     // Menampilkan halaman admin category
     public function view_category()
     {
-        return view('admin.category');
+        $categories = Category::all();
+        return view('admin.category', compact('categories'));
     }
 
     // Menghadle category yang dibuat oleh admin dan disimpan ke database
@@ -21,5 +22,14 @@ class AdminController extends Controller
         // Menambahkan flash message ketika category yang dibuat berhasil
         toastr()->closeButton()->timeOut(1300)->success('Category Added Successfully');
         return redirect() -> back();
+    }
+    
+    
+    // Membuat Fungsi delete data category
+    public function delete_category($id){
+        $category = Category::find($id);
+        $category -> delete();
+        toastr()->closeButton()->timeOut(1300)->success('Category Delete Successfully');
+        return redirect()->back();
     }
 }
