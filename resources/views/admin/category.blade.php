@@ -73,6 +73,10 @@
                   <td>{{ $loop->iteration }}</td>
                   <td>{{ $category->category_name }}</td>
                   <td>
+                    <form action="{{ url('edit_category', $category->id) }}" method="GET" style="display: inline;">
+                      @csrf
+                      <button type="submit" class="btn btn-success btn-sm">Edit</button>
+                    </form>
                     <form action="{{ url('delete_category', $category->id) }}" method="POST" style="display: inline;">
                       @csrf
                       <a type="submit" class="btn btn-danger btn-sm" onclick="confirmation(event)">Delete</a>
