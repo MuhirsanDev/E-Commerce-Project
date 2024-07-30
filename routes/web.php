@@ -27,3 +27,6 @@ Route::get('view_category', [AdminController::class,'view_category'])->middlewar
 
 // Route untuk mengirim category yang dibuat oleh admin ke database
 Route::post('add_category', [AdminController::class,'add_category'])->middleware(['auth','admin']);
+
+// Route untuk delete data category
+Route::post('delete_category/{id}', [AdminController::class,'delete_category'])->middleware(['auth','admin']);
