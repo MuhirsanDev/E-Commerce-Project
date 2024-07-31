@@ -42,3 +42,6 @@ Route::get('add_product', [AdminController::class, 'add_product'])->middleware([
 
 // Route untuk upload product
 Route::post('upload_product', [AdminController::class, 'upload_product'])->middleware(['auth','admin']);
+
+// Route untuk view product
+Route::get('view_product', [AdminController::class, 'view_product'])->middleware(['auth','admin']);
