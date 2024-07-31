@@ -50,6 +50,11 @@
                     @endforeach
                 </tbody>
                 </table>
+
+                {{-- Menambahlan Pagination --}}
+                <div class="mt-2 d-flex justify-content-center">
+                    {{ $product->onEachSide(1)->links() }}
+                </div>
             </div>
            
             {{-- End --}}
