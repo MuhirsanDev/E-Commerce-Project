@@ -78,13 +78,21 @@ class AdminController extends Controller
         $data->save();
         toastr()->closeButton()->timeOut(1300)->success('Product Added Successfully');
         return redirect()->back();
-
+        
     }
-
+    
     // Menampilkan halaman view product
     public function view_product(){
         $product = Product::paginate(5);
         return view('admin.view_product', compact('product'));
+    }
+    
+    // Membuat fungsi menghapus data product di view product
+    public function delete_product($id){
+        $data = Product::find($id);
+        $data->delete();
+        toastr()->closeButton()->timeOut(1300)->success('Deleted Product Successfully');
+        return redirect()->back();
     }
 
 
