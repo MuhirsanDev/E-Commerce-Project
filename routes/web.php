@@ -48,3 +48,9 @@ Route::get('view_product', [AdminController::class, 'view_product'])->middleware
 
 // Route untuk delete product di view product
 Route::delete('delete_product/{id}', [AdminController::class, 'delete_product'])->middleware(['auth','admin'])->name('delete_product');
+
+// Route untuk edit product di view product
+Route::get('/admin/edit_product/{id}', [AdminController::class, 'edit'])->name('edit_product')->middleware(['auth','admin']);
+
+// Route untuk update product after edit di view product
+Route::post('/admin/update_product/{id}', [AdminController::class, 'update'])->name('update_product')->middleware(['auth','admin']);

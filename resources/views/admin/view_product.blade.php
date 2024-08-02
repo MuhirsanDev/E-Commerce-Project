@@ -47,12 +47,17 @@
                         <td style="color: white; border: 1px solid white; white-space: nowrap;">{{ $products->price }}</td>
                         <td style="color: white; border: 1px solid white; white-space: nowrap;">{{ $products->quantity }}</td>
                         <td style="color: white; border: 1px solid white; white-space: nowrap;"><img height="100" width="100" src="products/{{ $products->image }}"></td>
-                        <td style="text-align: center;">
-                          <form action="{{ route('delete_product', $products->id) }}" method="POST">
+                        <td style="text-align: center; color: white; border: 1px solid white; white-space: nowrap;">
+                            <form action="{{ route('edit_product', $products->id) }}" method="GET">
+                              <button type="submit" class="btn btn-success">Edit</button>
+                            </form>
+                          
+                          <form class="mt-1" action="{{ route('delete_product', $products->id) }}" method="POST">
                             @csrf
                             @method('DELETE') <!-- Menambahkan metode DELETE -->
                             <button onclick="confirmation(event)" type="submit" class="btn btn-danger">Delete</button>
                           </form>
+                          
                         </td>
                     </tr>    
                     @endforeach
