@@ -45,3 +45,6 @@ Route::post('upload_product', [AdminController::class, 'upload_product'])->middl
 
 // Route untuk view product
 Route::get('view_product', [AdminController::class, 'view_product'])->middleware(['auth','admin']);
+
+// Route untuk delete product di view product
+Route::delete('delete_product/{id}', [AdminController::class, 'delete_product'])->middleware(['auth','admin'])->name('delete_product');
