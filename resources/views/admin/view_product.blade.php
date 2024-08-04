@@ -18,6 +18,19 @@
         <div class="page-header">
           <div class="container-fluid">
 
+            {{-- Form screach --}}
+            <form action="{{ route('search_product') }}" method="GET" class="mb-3">
+              <div class="input-group">
+                <input type="text" name="query" class="form-control" placeholder="Search for products..." value="{{ request()->input('query') }}">
+                <div class="input-group-append">
+                  <button type="submit" class="btn btn-primary">Search</button>
+                  @if(request()->input('query')) <!-- Cek apakah ada query -->
+                    <a href="{{ route('view_product') }}" class="btn btn-secondary ml-2">Cancel</a> <!-- Tombol Cancel -->
+                  @endif
+                </div>
+              </div>
+            </form>
+
             {{-- Admin Body Page --}}
 
             <div class="table-responsive">
