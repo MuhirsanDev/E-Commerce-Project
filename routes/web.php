@@ -54,3 +54,9 @@ Route::get('/admin/edit_product/{id}', [AdminController::class, 'edit'])->name('
 
 // Route untuk update product after edit di view product
 Route::post('/admin/update_product/{id}', [AdminController::class, 'update'])->name('update_product')->middleware(['auth','admin']);
+
+// Route untuk search product
+Route::get('/search_product', [AdminController::class, 'search'])->name('search_product')->middleware(['auth','admin']);
+
+// Route untuk menampilkan view after search data product
+Route::get('/view_product', [AdminController::class, 'index'])->name('view_product')->middleware(['auth','admin']);
