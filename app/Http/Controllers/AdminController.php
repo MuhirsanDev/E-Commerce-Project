@@ -120,7 +120,33 @@ class AdminController extends Controller
     $product->save();
     toastr()->closeButton()->timeOut(1300)->success('Product Edit Successfully');
     return redirect('/view_product');
-}
+    
+    }
+
+    // Fungsi menampilkan search form dari database
+    public function search(Request $request) {
+        $query = $request->input('query');
+    
+        if ($query) {
+            $product = Product::where('title', 'LIKE', "%$query%")
+                              ->orWhere('description', 'LIKE', "%$query%")
+                              ->orWhere('category', 'LIKE', "%$query%") // Mencari berdasarkan kategori
+                              ->orWhere('price', $query) // Mencari berdasarkan harga
+                              ->orWhere('quantity', $query) // Mencari berdasarkan kuantitas
+                              ->paginate(5);
+        } else {
+            $product = Product::paginate(5); // Menampilkan semua produk jika tidak ada query
+        }
+
+    return view('admin.view_product', compact('product')); }
+
+
+    // Fungsi mereturn index dengan pagiantion 
+    public function index()
+    {
+        $product = Product::paginate(5); // Menampilkan semua produk dengan paginasi
+        return view('admin.view_product', compact('product'));
+    }
 
 
 }
