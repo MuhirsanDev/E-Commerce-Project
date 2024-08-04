@@ -36,20 +36,33 @@
 
         {{-- login --}}
         <div class="user_option">
-          <a href="{{ url('/login') }}">
-            <i class="fa fa-user" aria-hidden="true"></i>
-            <span>
-              Login
-            </span>
-          </a>
+          @if(Auth::check())
+            {{-- Logout --}}
+            <a href="{{ url('/logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+              <i class="fa fa-sign-out" aria-hidden="true"></i>
+              <span>
+                Logout
+              </span>
+            </a>
+            <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+              @csrf
+            </form>
+          @else
+            <a href="{{ url('/login') }}">
+              <i class="fa fa-user" aria-hidden="true"></i>
+              <span>
+                Login
+              </span>
+            </a>
 
-          {{-- Register --}}
-          <a href="{{ url('/register') }}">
-            <i class="fa fa-vcard" aria-hidden="true"></i>
-            <span>
-              Register
-            </span>
-          </a>
+            {{-- Register --}}
+            <a href="{{ url('/register') }}">
+              <i class="fa fa-vcard" aria-hidden="true"></i>
+              <span>
+                Register
+              </span>
+            </a>
+          @endif
           <a href="">
             <i class="fa fa-shopping-bag" aria-hidden="true"></i>
           </a>
